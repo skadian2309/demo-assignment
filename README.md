@@ -76,7 +76,8 @@
    nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
    ```   
 6. Created service.yaml of both deployment.
-   nayan.yaml
+   
+   a. nayan-svc.yaml
    ```yaml
     apiVersion: v1
     kind: Service
@@ -102,7 +103,7 @@
     status:
       loadBalancer: {}
    ```    
-   nayan-ai-challenge-rails.yaml
+   b. nayan-ai-challenge-rails-svc.yaml
    ```yaml
     apiVersion: v1
     kind: Service

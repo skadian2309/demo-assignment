@@ -74,7 +74,62 @@ NAME                                        READY   STATUS    RESTARTS   AGE
 nayan-5f8f8cfd7c-4tstt                      1/1     Running   0          4h58m
 nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
 ```
-6. Created service of both deployment.
+6. Created service.yaml of both deployment.
+   nayan.yaml
+   ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      creationTimestamp: "2020-10-15T09:18:59Z"
+      labels:
+        app: nayan
+      name: nayan
+      namespace: demo
+      resourceVersion: "66802"
+      selfLink: /api/v1/namespaces/demo/services/nayan
+      uid: 890a5ea7-0ea3-460c-b08d-3871b6027570
+    spec:
+      clusterIP: 10.4.1.102
+      ports:
+      - port: 8080
+        protocol: TCP
+        targetPort: 8080
+      selector:
+        app: nayan
+      sessionAffinity: None
+      type: ClusterIP
+    status:
+      loadBalancer: {}
+  ```    
+ nayan.yaml
+ ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+      creationTimestamp: "2020-10-15T09:22:22Z"
+      finalizers:
+      - service.kubernetes.io/load-balancer-cleanup
+      labels:
+        app: nayan-ai-challenge-rails
+      name: nayan-ai-challenge-rails
+      namespace: demo
+      resourceVersion: "69510"
+      selfLink: /api/v1/namespaces/demo/services/nayan-ai-challenge-rails
+      uid: e8bc904b-fd8f-405f-9930-d47fb8d8645d
+    spec:
+      clusterIP: 10.4.6.43
+      externalTrafficPolicy: Cluster
+      ports:
+      - nodePort: 32703
+        port: 3000
+        protocol: TCP
+        targetPort: 3000
+      selector:
+        app: nayan-ai-challenge-rails
+      sessionAffinity: None
+      type: LoadBalancer	
+```
+8. Checked services are created succssfully.
 ```
 kubectl get svc -n demo
 NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)          AGE
@@ -82,7 +137,7 @@ nayan                      ClusterIP      10.4.1.102   <none>          8080/TCP 
 nayan-ai-challenge-rails   LoadBalancer   10.4.6.43    35.202.189.53   3000:32703/TCP   5h27m
 ```
 
-8.Scaled the pods  from 1 to 2.
+8.Scaled the pods from 1 to 2.
 ```
 kubectl scale --replicas=2 deployment/nayan-ai-challenge-rails -n demo
 kubectl scale --replicas=2 deployment/nayan -n demo

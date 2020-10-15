@@ -101,8 +101,8 @@ nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
     status:
       loadBalancer: {}
    ```    
-  nayan-ai-challenge-rails.yaml
-  ```yaml
+   nayan-ai-challenge-rails.yaml
+   ```yaml
     apiVersion: v1
     kind: Service
     metadata:
@@ -128,15 +128,14 @@ nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
         app: nayan-ai-challenge-rails
       sessionAffinity: None
       type: LoadBalancer	
-  ```
+   ```
 8. Checked services are created succssfully.
-```
-kubectl get svc -n demo
-NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)          AGE
-nayan                      ClusterIP      10.4.1.102   <none>          8080/TCP         5h30m
-nayan-ai-challenge-rails   LoadBalancer   10.4.6.43    35.202.189.53   3000:32703/TCP   5h27m
-```
-
+   ```
+   kubectl get svc -n demo
+   NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)          AGE
+   nayan                      ClusterIP      10.4.1.102   <none>          8080/TCP         5h30m
+   nayan-ai-challenge-rails   LoadBalancer   10.4.6.43    35.202.189.53   3000:32703/TCP   5h27m
+   ```	  
 8.Scaled the pods from 1 to 2.
 ```
 kubectl scale --replicas=2 deployment/nayan-ai-challenge-rails -n demo

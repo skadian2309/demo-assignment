@@ -100,9 +100,9 @@ nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
       type: ClusterIP
     status:
       loadBalancer: {}
-  ```    
- nayan.yaml
- ```
+   ```    
+  nayan-ai-challenge-rails.yaml
+  ```yaml
     apiVersion: v1
     kind: Service
     metadata:
@@ -128,7 +128,7 @@ nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          4h55m
         app: nayan-ai-challenge-rails
       sessionAffinity: None
       type: LoadBalancer	
-```
+  ```
 8. Checked services are created succssfully.
 ```
 kubectl get svc -n demo

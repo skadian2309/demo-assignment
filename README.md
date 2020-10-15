@@ -29,7 +29,41 @@
            resources: {}
    status: {}
    ```
-   nayan-ai-challenge-rails.yaml  
+   nayan-ai-challenge-rails.yaml
+   ```yaml
+   
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     creationTimestamp: null
+     labels:
+       app: nayan-ai-challenge-rails
+     name: nayan-ai-challenge-rails
+     namespace: demo
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: nayan-ai-challenge-rails
+     strategy: {}
+     template:
+       metadata:
+         creationTimestamp: null
+         labels:
+           app: nayan-ai-challenge-rails
+       spec:
+         imagePullSecrets:
+         - name: imagestreamsecret
+         containers:
+         - env:
+           - name: AI_END_POINT
+             value: http://nayan:8080/predict
+           image: quay.io/skadian1/nayan-ai-challenge-rails:v2
+           name: nayan-ai-challenge-rails
+           resources: {}
+   ```
+   
+   
    nayan.yaml5
 
 5. Deployed the above YAML files and checked that applications pods are running successfully or not.

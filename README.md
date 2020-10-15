@@ -150,7 +150,6 @@
    nayan-ai-challenge-rails-64f4b5fbc6-r25w2   1/1     Running   0          5h10m
    nayan-ai-challenge-rails-64f4b5fbc6-x8m5k   1/1     Running   0          112s
    ```   
-
 11. Tested the application end to end,
     ```
     curl  --location --request POST 'http://34.72.138.46:32703/ai/process_image' --form 'image=@env.json.jpg'

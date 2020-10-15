@@ -2,7 +2,7 @@
 2. Created one more VM instance with Jmeter to put the loads on application.
 3. Added host 0.0.0.0 in app.py of AI-flask because by default it was bound with localhost and recreated the docker image.
 4. Created Deployment YAML files for both applications.
-  nayan.yaml
+   a. nayan.yaml
    ```yaml
    apiVersion: apps/v1
    kind: Deployment
@@ -32,7 +32,7 @@
            resources: {}
    status: {}
    ```
-   nayan-ai-challenge-rails.yaml
+   b. nayan-ai-challenge-rails.yaml
    ```yaml
    
    apiVersion: apps/v1

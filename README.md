@@ -1,5 +1,34 @@
 1. Created google Kubernetes cluster with three nodes.2. Created one more VM instance with Jmeter to put the loads on application.3. Added host 0.0.0.0 in app.py of AI-flask because by default it was bound with localhost and recreated the docker image.
 4. Created Deployment YAML files for both applications.
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     creationTimestamp: null
+     labels:
+       app: nayan
+     name: nayan
+     namespace: demo
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: nayan
+     strategy: {}
+     template:
+       metadata:
+         creationTimestamp: null
+         labels:
+           app: nayan
+       spec:
+         imagePullSecrets:
+         - name: imagestreamsecret
+         containers:
+         - image: quay.io/skadian1/nayan:devops_v2
+           name: nayan
+           resources: {}
+   status: {}
+   ```
    nayan-ai-challenge-rails.yaml  
    nayan.yaml5
 

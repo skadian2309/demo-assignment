@@ -1,7 +1,7 @@
 
 ## Created kubernetes cluster
-### Created google Kubernetes cluster with three nodes.Created one more VM instance with Jmeter to put the loads on application.
-### Added host 0.0.0.0 in app.py of AI-flask because by default it was bound with localhost and recreated the docker image.
+. Created google Kubernetes cluster with three nodes.Created one more VM instance with Jmeter to put the loads on application.
+. Added host 0.0.0.0 in app.py of AI-flask because by default it was bound with localhost and recreated the docker image.
 Created Deployment YAML files for both applications.
 nayan-ai-challenge-rails.yaml  nayan.yamlDeployed the above YAML files and checked that applications pods are running successfully or not.
 kubectl get pods -n demoNAME READY STATUS RESTARTS AGEnayan-5f8f8cfd7c-4tstt 1/1 Running 0 4h58m nayan-ai-challenge-rails-64f4b5fbc6-r25w2 1/1 Running 0 4h55m Scaled the pods  from 1 to 2, 
